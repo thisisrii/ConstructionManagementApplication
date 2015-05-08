@@ -17,8 +17,8 @@ public class SubContractorTest {
 
     @Test
     public void testSubContractor() throws Exception {
-        SubContractor subContractor = new SubContractor.Builder(10).name("Martin and East").speciality("Civil Engineering")
-                .addressCode("SCA01").contractorCode("SC01").build();
+        SubContractor subContractor = new SubContractor.Builder("SC01").name("Martin and East").speciality("Civil Engineering")
+                .addressCode("SCA01").build();
         Assert.assertEquals("Martin and East", subContractor.getName());
 
 

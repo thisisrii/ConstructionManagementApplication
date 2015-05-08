@@ -1,14 +1,20 @@
 package constructioncompany.domain;
 
+import javax.persistence.Entity;
 import java.io.Serializable;
 
 /**
  * Created by Yusiry Davids on 4/23/2015.
  */
+@Entity
 public class SafetyInsp extends Staff implements Serializable {
 
     private String institute;
     private String qualification;
+
+    public SafetyInsp(){
+
+    }
 
 
     public String getInstitute() {

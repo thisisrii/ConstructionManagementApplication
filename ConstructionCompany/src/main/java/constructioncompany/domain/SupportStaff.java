@@ -11,6 +11,10 @@ public class SupportStaff extends Staff implements Serializable {
     private String qualification;
     private String university;
 
+    public SupportStaff(){
+
+    }
+
 
     public String getPosition() {
         return position;

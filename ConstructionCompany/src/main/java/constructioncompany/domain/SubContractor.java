@@ -15,16 +15,19 @@ public class SubContractor implements Serializable {
     @Column(unique = true)
     private String contractorCode;
     private String name;
-    @Embedded
     private String addressCode;
     private String speciality;
 
     public SubContractor(Builder builder){
-        id = builder.id;
+       // id = builder.id;
         contractorCode = builder.contractorCode;
         name = builder.name;
         addressCode = builder.addressCode;
         speciality = builder.speciality;
+    }
+
+    public SubContractor(){
+
     }
 
     public int getId() {
@@ -48,19 +51,14 @@ public class SubContractor implements Serializable {
     }
 
     public static class Builder{
-        private int id;
+    //    private int id;
         private String contractorCode;
         private String name;
         private String addressCode;
         private String speciality;
 
-        public Builder(int id){
-            this.id = id;
-        }
-
-        public Builder contractorCode(String value){
-            this.contractorCode = value;
-            return this;
+        public Builder(String code){
+            this.contractorCode = code;
         }
 
         public Builder name(String value){
@@ -79,7 +77,6 @@ public class SubContractor implements Serializable {
         }
 
         public Builder copy(SubContractor subContractor){
-            this.id = subContractor.id;
             this.contractorCode = subContractor.contractorCode;
             this.name = subContractor.name;
             this.addressCode = subContractor.addressCode;

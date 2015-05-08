@@ -20,8 +20,8 @@ public abstract class Staff implements Serializable{
     private String IDnumber;
     @Embedded
     private String addressCode;
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="pay_code")
+   // @OneToOne(cascade = CascadeType.ALL)
+   // @JoinColumn(name="payCode")
     private String payCode;
 
     public String getStaffCode() {

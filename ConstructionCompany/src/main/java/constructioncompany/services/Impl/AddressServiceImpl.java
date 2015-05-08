@@ -16,11 +16,11 @@ import java.util.List;
 public class AddressServiceImpl implements AddressService {
 
     @Autowired
-    AddressRepository repository;
+    AddressRepository repositoryAddress;
     public List<Address> getAddresses() {
         List<Address> allAddresses = new ArrayList<Address>();
 
-        Iterable<Address> addresses  = repository.findAll();
+        Iterable<Address> addresses  = repositoryAddress.findAll();
         for (Address address : addresses){
             allAddresses.add(address);
         }

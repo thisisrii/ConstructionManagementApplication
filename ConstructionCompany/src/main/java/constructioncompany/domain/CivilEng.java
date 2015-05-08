@@ -11,6 +11,10 @@ public class CivilEng extends Staff implements Serializable {
     private String university;
     private String qualification;
 
+    public CivilEng(){
+
+    }
+
     public String getUniversity() {
         return university;
     }

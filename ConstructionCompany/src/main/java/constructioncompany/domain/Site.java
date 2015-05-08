@@ -12,18 +12,18 @@ public class Site implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name="site_id", nullable = false)
     private Long id;
     private String siteName;
     @Column(unique = true)
     private String siteCode;
-    @Embedded
     private String addressCode;
     private int siteSize;
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name="staff_code")
+    @JoinColumn(name="staffCode")
     private List<Staff> staff;
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name="subcontractor_code")
+    @JoinColumn(name="subcontractorCode")
     private List<SubContractor> subContractors;
 
     private Site(){
@@ -52,7 +52,7 @@ public class Site implements Serializable {
         return siteCode;
     }
 
-    public String getAddressCode(){
+    public String getAddressCodeTwo(){
         return addressCode;
     }
 
@@ -121,7 +121,7 @@ public class Site implements Serializable {
             this.siteName = value.getSiteName();
             this.siteCode = value.getSiteCode();
             this.siteSize = value.getSiteSize();
-            this.addressCode = value.getAddressCode();
+            this.addressCode = value.getAddressCodeTwo();
             this.id = value.getID();
             this.staff = value.getStaff();
             this.subContractors = value.getSubContractors();

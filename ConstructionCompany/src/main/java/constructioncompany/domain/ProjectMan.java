@@ -10,6 +10,10 @@ public class ProjectMan extends Staff implements Serializable {
     private String university;
     private String qualification;
 
+    public ProjectMan(){
+
+    }
+
     public String getUniversity() {
         return university;
     }

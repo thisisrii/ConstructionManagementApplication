@@ -10,6 +10,10 @@ public class SiteForeman extends Staff implements Serializable{
     private String university;
     private String qualification;
 
+    public SiteForeman(){
+
+    }
+
     public String getUniversity() {
         return university;
     }

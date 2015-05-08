@@ -16,6 +16,10 @@ public class PayRoll implements Serializable {
     private String payCode;
     private String receiverCode;
 
+    public PayRoll(){
+
+    }
+
     public String getReceiverCode() {
         return receiverCode;
     }
@@ -33,20 +37,18 @@ public class PayRoll implements Serializable {
     }
 
     public PayRoll(Builder builder){
-        this.id = builder.id;
         this.amount = builder.amount;
         this.payCode = builder.payCode;
         this.receiverCode = builder.receiverCode;
     }
 
     public static class Builder{
-        private int id;
         private double amount;
         private String payCode;
         private String receiverCode;
 
-        public Builder(int id){
-            this.id = id;
+        public Builder(String code){
+            this.payCode = code;
         }
 
         public Builder amount(double value){
@@ -65,7 +67,6 @@ public class PayRoll implements Serializable {
         }
 
         public Builder copy(PayRoll value){
-            this.id = value.id;
             this.amount = value.amount;
             this.payCode = value.payCode;
 

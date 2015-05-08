@@ -39,27 +39,29 @@ public class TestCrudSite {
 
     @Test
     public void testRead() throws Exception {
-        Site site = repository.findOne(code);
+        Site site = repository.findBysiteCode("F111");
         Assert.assertEquals("Foreshore, Cape Town", site.getSiteName());
     }
 
     @Test
     public void testUpdate() throws Exception {
 
-        Site site = repository.findOne(code);
-        Site newSite = new Site.Builder("D1").siteName("Mikes Cafe").siteSize(300).addressCode("N12").build();
+        Site site = repository.findBysiteCode("F111");
+        Site newSite = new Site.Builder("MC111").siteName("Mikes Cafe").siteSize(300).addressCode("N12").id(site.getID()).build();
+        repository.delete(site);
         repository.save(newSite);
-        Assert.assertEquals("Mikes Cafe", site.getSiteName());
-        Assert.assertEquals(300, site.getSiteSize());
+        Assert.assertNotEquals("Mikes Cafe", site.getSiteName());
+        Assert.assertNotEquals(300, site.getSiteSize());
 
     }
 
     @Test
     public void testDelete() throws Exception {
-        Site site = repository.findOne(code);
+        Site site = repository.findBysiteCode("F111");
         repository.delete(site);
-        Site newSite = repository.findOne(code);
+        Site newSite = repository.findBysiteCode("F111");
         Assert.assertNull(newSite);
 
     }
+
 }

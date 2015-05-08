@@ -9,6 +9,10 @@ public class Artisan extends Staff implements Serializable {
 
     private String skill;
 
+    public Artisan(){
+
+    }
+
     public String getSkill() {
         return skill;
     }

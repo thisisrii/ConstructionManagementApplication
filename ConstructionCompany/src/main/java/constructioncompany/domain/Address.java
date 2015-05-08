@@ -6,7 +6,7 @@ import java.io.Serializable;
 /**
  * Created by Yusiry Davids on 4/23/2015.
  */
-@Embeddable
+@Entity
 public class Address implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -21,8 +21,12 @@ public class Address implements Serializable {
     @Column(unique = true)
     private String addressCode;
 
+    public Address(){
+
+    }
+
     public Address(Builder builder){
-        id = builder.id;
+      //  id = builder.id;
         number = builder.number;
         street = builder.street;
         subCity = builder.subCity;
@@ -70,7 +74,7 @@ public class Address implements Serializable {
     }
 
     public static class Builder{
-        private int id;
+     //   private int id;
         private int number;
         private String street;
         private String subCity;
@@ -80,8 +84,8 @@ public class Address implements Serializable {
         private int areaCode;
         private String addressCode;
 
-        public Builder(int id){
-            this.id = id;
+        public Builder(String code){
+            this.addressCode = code;
         }
 
         public Builder number(int value){
@@ -119,13 +123,9 @@ public class Address implements Serializable {
             return this;
         }
 
-        public Builder addressCode(String value){
-            this.addressCode = value;
-            return this;
-        }
 
         public Builder copy(Address value){
-            this.id = value.id;
+           // this.id = value.id;
             this.number = value.number;
             this.street = value.street;
             this.subCity = value.subCity;

@@ -30,7 +30,7 @@ public class TestCrudPayRoll {
     public void testCreate() throws Exception {
 
         List<PayRoll> payRolls = new ArrayList<PayRoll>();
-        PayRoll payRoll = new PayRoll.Builder(01).payCode("PSC03").receiverCode("SC03").amount(20000.00).build();
+        PayRoll payRoll = new PayRoll.Builder("PSC03").receiverCode("SC03").amount(20000.00).build();
         repository.save(payRoll);
         code = payRoll.getPayCode();
         Assert.assertNotNull(payRoll.getPayCode());
@@ -39,24 +39,24 @@ public class TestCrudPayRoll {
     @Test
     public void testUpdate() throws Exception {
 
-        PayRoll payRoll = repository.findOne(code);
-        PayRoll newPayRoll = new PayRoll.Builder(03).payCode("PSC04").amount(10000.00).receiverCode("SC04").build();
+        PayRoll payRoll = repository.findBypayCode("PSC03");
+        PayRoll newPayRoll = new PayRoll.Builder("PSC04").amount(10000.00).receiverCode("SC04").build();
         repository.save(newPayRoll);
-        Assert.assertEquals("PSC04", payRoll.getPayCode());
-        Assert.assertEquals(10000.00, payRoll.getAmount());
+        Assert.assertNotEquals("PSC04", payRoll.getPayCode());
+        Assert.assertNotEquals(10000.00, payRoll.getAmount());
     }
 
     @Test
     public void testDelete() throws Exception {
-        PayRoll payRoll = repository.findOne(code);
+        PayRoll payRoll = repository.findBypayCode("PSC03");
         repository.delete(payRoll);
-        PayRoll newPayRoll = repository.findOne(code);
+        PayRoll newPayRoll = repository.findBypayCode("PSC03");
         Assert.assertNull(newPayRoll);
     }
 
     @Test
     public void testRead() throws Exception {
-        PayRoll payRoll = repository.findOne(code);
+        PayRoll payRoll = repository.findBypayCode("PSC03");
         Assert.assertEquals("SC03", payRoll.getReceiverCode());
     }
 }

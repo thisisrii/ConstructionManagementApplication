@@ -17,7 +17,7 @@ public class AddressTest {
 
     @Test
     public void testAddress() throws Exception {
-        Address address = new Address.Builder(01).addressCode("ASC01").number(5).street("Kirst Avenue")
+        Address address = new Address.Builder("ASC01").number(5).street("Kirst Avenue")
                 .subCity("Belville").city("Cape Town").province("Western Cape").country("South Africa")
                 .areaCode(7935).build();
         Assert.assertEquals("Kirst Avenue", address.getStreet());

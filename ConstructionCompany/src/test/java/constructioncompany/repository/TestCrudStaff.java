@@ -42,26 +42,26 @@ public class TestCrudStaff {
 
     @Test
     public void testRead() throws Exception {
-        Staff inspector = repository.findOne(code);
+        Staff inspector = repository.findBystaffCode("SI01");
         Assert.assertEquals("Sipho", inspector.getName());
     }
 
     @Test
     public void testUpdate() throws Exception {
-        Staff inspector = repository.findOne(code);
+        Staff inspector = repository.findBystaffCode("SI01");
         Staff newInspector = new SafetyInsp.Builder("Northlink").IDnumber("9705432910").addressCode("ASI02")
                 .name("David").surname("Michael").payCode("PSI02").phone("0798654321").qualification("ND Safety and Health")
                 .staffCode("SI02").build();
         repository.save(newInspector);
-        Assert.assertEquals("Michael", inspector.getSurname());
-        Assert.assertEquals("SI02", inspector.getStaffCode());
+        Assert.assertNotEquals("Michael", inspector.getSurname());
+        Assert.assertNotEquals("SI02", inspector.getStaffCode());
     }
 
     @Test
     public void testDelete() throws Exception {
-        Staff inspector = repository.findOne(code);
+        Staff inspector = repository.findBystaffCode("SI01");
         repository.delete(inspector);
-        Staff newInspector = repository.findOne(code);
+        Staff newInspector = repository.findBystaffCode("SI01");
         Assert.assertNull(newInspector);
     }
 }

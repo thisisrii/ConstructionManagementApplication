@@ -17,7 +17,7 @@ public class PayRollTest {
 
     @Test
     public void testPayRoll() throws Exception {
-        PayRoll payRoll = new PayRoll.Builder(01).payCode("PSC02").amount(50000.00).receiverCode("SC02").build();
+        PayRoll payRoll = new PayRoll.Builder("PSC02").amount(50000.00).receiverCode("SC02").build();
         Assert.assertEquals("PSC02", payRoll.getPayCode());
 
     }
