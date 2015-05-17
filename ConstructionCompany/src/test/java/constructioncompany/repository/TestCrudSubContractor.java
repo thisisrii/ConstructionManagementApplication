@@ -1,6 +1,7 @@
 package constructioncompany.repository;
 
 import constructioncompany.App;
+import constructioncompany.conf.factory.SubContractorFactory;
 import constructioncompany.domain.SubContractor;
 import constructioncompany.respository.SubContractorRepository;
 import org.junit.Assert;
@@ -12,7 +13,9 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Yusiry Davids on 4/23/2015.
@@ -30,9 +33,13 @@ public class TestCrudSubContractor {
     @Test
     public void testCreate() throws Exception {
 
-        List<SubContractor> subContractors = new ArrayList<SubContractor>();
-        SubContractor subContractor = new SubContractor.Builder("SC02").addressCode("SCA02")
-                .name("Gareth's Plumbing").speciality("Plumbing").build();
+        Map<String, String> values = new HashMap<>();
+        values.put("contractorCode", "SC02");
+        values.put("addressCode", "SCA02");
+        values.put("name", "Gareth's Plumbing");
+        values.put("speciality", "Plumbing");
+
+        SubContractor subContractor = SubContractorFactory.createSubContractor(values);
         repository.save(subContractor);
         code = subContractor.getContractorCode();
         Assert.assertNotNull(subContractor.getId());
@@ -48,8 +55,13 @@ public class TestCrudSubContractor {
     @Test
     public void testUpdate() throws Exception {
         SubContractor subContractor = repository.findBycontractorCode("SC02");
-        SubContractor newSubContractor = new SubContractor.Builder("SC03").addressCode("SCA03")
-                .name("Mike's Plumbing").speciality("Plumbing").build();
+        Map<String, String> values = new HashMap<>();
+        values.put("contractorCode", "SC03");
+        values.put("addressCode", "SCA03");
+        values.put("name", "Mikes's Plumbing");
+        values.put("speciality", "Plumbing");
+        SubContractor newSubContractor = SubContractorFactory.createSubContractor(values);
+        repository.delete(subContractor);
         repository.save(newSubContractor);
         Assert.assertNotEquals("Mike's Plumbing", subContractor.getName());
         Assert.assertNotEquals("SC03", subContractor.getContractorCode());
@@ -57,7 +69,7 @@ public class TestCrudSubContractor {
 
     @Test
     public void testDelete() throws Exception {
-        SubContractor subContractor = repository.findBycontractorCode("SC02");
+        SubContractor subContractor = repository.findBycontractorCode("SC03");
         repository.delete(subContractor);
         SubContractor newSubContractor = repository.findBycontractorCode("SC02");
         Assert.assertNull(newSubContractor);

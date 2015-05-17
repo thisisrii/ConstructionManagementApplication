@@ -12,8 +12,7 @@ public class Site implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="site_id", nullable = false)
-    private Long id;
+    private int id;
     private String siteName;
     @Column(unique = true)
     private String siteCode;
@@ -31,7 +30,6 @@ public class Site implements Serializable {
     }
 
     public Site(Builder builder){
-        id = builder.id;
         siteName = builder.siteName;
         siteCode = builder.siteCode;
         addressCode = builder.addressCode;
@@ -40,9 +38,6 @@ public class Site implements Serializable {
         subContractors = builder.subContractors;
     }
 
-    public Long getID(){
-        return id;
-    }
 
     public String getSiteName(){
         return  siteName;
@@ -64,9 +59,6 @@ public class Site implements Serializable {
         return staff;
     }
 
-    public Long getId() {
-        return id;
-    }
 
     public List<SubContractor> getSubContractors() {
         return subContractors;
@@ -122,7 +114,7 @@ public class Site implements Serializable {
             this.siteCode = value.getSiteCode();
             this.siteSize = value.getSiteSize();
             this.addressCode = value.getAddressCodeTwo();
-            this.id = value.getID();
+
             this.staff = value.getStaff();
             this.subContractors = value.getSubContractors();
             return this;
@@ -133,20 +125,6 @@ public class Site implements Serializable {
         }
     }
 
-    @Override
-    public boolean equals(Object o){
-        if(this==o) return true;
-        if (!(o instanceof Site)) return  false;
-
-        Site site = (Site) o;
-
-        return !(id != null ? !id.equals(site.id) : site.id != null);
-    }
-
-    @Override
-    public int hashCode(){
-        return id != null ? id.hashCode() : 0;
-    }
 
     @Override
     public String toString(){

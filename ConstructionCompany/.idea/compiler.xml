@@ -25,5 +25,8 @@
         <module name="constructioncompany" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="constructioncompany" target="1.7" />
+    </bytecodeTargetLevel>
   </component>
 </project>

@@ -33,7 +33,6 @@ public abstract class Staff implements Serializable{
 
     public Staff() {
     }
-
     public String getAddressCode() {
         return addressCode;
     }

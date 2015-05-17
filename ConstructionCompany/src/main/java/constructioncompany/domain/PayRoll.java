@@ -56,11 +56,6 @@ public class PayRoll implements Serializable {
             return this;
         }
 
-        public Builder payCode(String value){
-            this.payCode = value;
-            return this;
-        }
-
         public Builder receiverCode(String value){
             this.receiverCode  = value;
             return this;

@@ -1,10 +1,12 @@
 package constructioncompany.domain;
 
+import javax.persistence.Entity;
 import java.io.Serializable;
 
 /**
  * Created by Yusiry Davids on 4/23/2015.
  */
+@Entity
 public class Artisan extends Staff implements Serializable {
 
     private String skill;
